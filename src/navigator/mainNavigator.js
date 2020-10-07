@@ -1,34 +1,40 @@
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-import {createDrawerNavigator} from 'react-navigation-drawer';
+import React from "react";
+import {
+  View,
+  Image,
+  ImageBackground,
+  TouchableOpacity,
+  Text,
+  Button,
+  Switch,
+  TextInput,
+  StyleSheet,
+} from "react-native";
+import DateTimePicker from 'react-native-datepicker';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import Slider from '@react-native-community/slider';
+import { CheckBox } from 'react-native-elements';
+import {SlideMenuIcon} from '../../../navigator/slideMenuIcon';
 
-import SplashScreen from "../features/SplashScreen";
-import SideMenu from './sideMenu';
-//@BlueprintImportInsertion
+export default class Blank extends React.Component {
+  static navigationOptions = ({navigation}) => {
+    return {
+      headerLeft: <SlideMenuIcon navigationProps={navigation} />,
+    };
+  };
+  
+  state = {};
 
-/**
- * new navigators can be imported hehehehehehehehe
- */
+  render = () => (
+    <View style={styles.container}>
+      <Text>This is your new component</Text>
+    </View>
+  );
+}
 
-const AppNavigator = {
-
-    //@BlueprintNavigationInsertion
-
-    /** new navigators can be added herehehehehehehehehehe */
-    SplashScreen: {
-      screen: SplashScreen
-    }
-};
-
-const DrawerAppNavigator = createDrawerNavigator(
-  {
-    ...AppNavigator,
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginHorizontal: 16,
   },
-  {
-    contentComponent: SideMenu
-  },
-);
-
-const AppContainer = createAppContainer(DrawerAppNavigator);
-
-export default AppContainer;
+});
